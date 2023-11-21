@@ -1,0 +1,59 @@
+﻿<Window x:Class="MyErp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyErp"
+        xmlns:views="clr-namespace:MyErp.Views"
+        mc:Ignorable="d"
+        Title="Dotnet Project" Height="450" Width="800"
+        d:DataContext="{d:DesignInstance Type=views:MainViewModel, IsDesignTimeCreatable=True}">
+    <Window.Resources>
+        <Style x:Key="MyLabels" TargetType="TextBlock">
+            <Setter Property="Margin" Value="6"></Setter>
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+        </Style>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" Background="Chartreuse">
+            <Button Content="Add Client" Command="{Binding AddCommand}" MinWidth="80" MinHeight="50"
+                    VerticalAlignment="Center" Margin="6" Background="Aqua"/>
+            <Button Content="Edit Client" Command="{Binding DeleteCommand}" MinWidth="80" MinHeight="50"
+                    VerticalAlignment="Center"  Margin="6" Background="Aqua"/>
+            <Button Content="Delete Client" Command="{Binding AddCommand}" MinWidth="80" MinHeight="50"
+                    VerticalAlignment="Center" Margin="6" Background="Aqua"/>
+            <Button Content="Disable Client" Command="{Binding DeleteCommand}" MinWidth="80" MinHeight="50"
+                    VerticalAlignment="Center"  Margin="6" Background="Aqua"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Background="Chartreuse">
+            <CheckBox Content=" Show disabled clients" VerticalAlignment="Center" Background="Aqua"></CheckBox>
+        </StackPanel>
+        <DataGrid Grid.Row="1" Margin="10" AlternatingRowBackground="LightBlue" ItemsSource="Binding">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Last Name" Binding=""></DataGridTextColumn>
+                <DataGridTextColumn Header="First Name" Binding=""></DataGridTextColumn>
+                <DataGridTextColumn Header="Society" Binding=""></DataGridTextColumn>
+                <DataGridTextColumn Header="CP" Binding=""></DataGridTextColumn>
+                <DataGridTextColumn Header="Phone Number" Binding=""></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock Margin="15">Client Details :</TextBlock>
+            <StackPanel Margin="0,290,0,0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="Delete Client" Command="{Binding AddCommand}" MaxWidth="80" MinHeight="50"
+                        VerticalAlignment="Center" Margin="6" Background="IndianRed"/>
+                <Button Content="Disable Client" Command="{Binding DeleteCommand}" MaxWidth="80" MinHeight="50"
+                        VerticalAlignment="Center"  Margin="6" Background="Orange"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
