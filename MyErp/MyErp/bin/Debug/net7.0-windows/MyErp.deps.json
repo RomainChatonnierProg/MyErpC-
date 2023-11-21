@@ -12,6 +12,11 @@
         },
         "runtime": {
           "MyErp.dll": {}
+        },
+        "resources": {
+          "fr/MyErp.resources.dll": {
+            "locale": "fr"
+          }
         }
       },
       "Microsoft.Extensions.DependencyInjection/7.0.0": {

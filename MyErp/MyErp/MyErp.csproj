@@ -10,4 +10,19 @@
 	<ItemGroup>
 	<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     </ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Translation\Dico.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Dico.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Translation\Dico.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Dico.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
 </Project>

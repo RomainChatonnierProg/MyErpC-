@@ -110,11 +110,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\John1\\Desktop\\cours\\dotnet\\doc projet\\MyErpBase (1)\\MyErp\\MyErp\\MyErp.csproj",
+      "projectUniqueName": "C:\\Users\\John1\\Desktop\\cours\\dotnet\\doc projet\\MyErpC#\\MyErp\\MyErp\\MyErp.csproj",
       "projectName": "MyErp",
-      "projectPath": "C:\\Users\\John1\\Desktop\\cours\\dotnet\\doc projet\\MyErpBase (1)\\MyErp\\MyErp\\MyErp.csproj",
+      "projectPath": "C:\\Users\\John1\\Desktop\\cours\\dotnet\\doc projet\\MyErpC#\\MyErp\\MyErp\\MyErp.csproj",
       "packagesPath": "C:\\Users\\John1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\John1\\Desktop\\cours\\dotnet\\doc projet\\MyErpBase (1)\\MyErp\\MyErp\\obj\\",
+      "outputPath": "C:\\Users\\John1\\Desktop\\cours\\dotnet\\doc projet\\MyErpC#\\MyErp\\MyErp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\John1\\AppData\\Roaming\\NuGet\\NuGet.Config"

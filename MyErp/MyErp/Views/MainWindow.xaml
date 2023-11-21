@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MyErp"
         xmlns:views="clr-namespace:MyErp.Views"
+        xmlns:translations="clr-namespace:MyErp.Translation"
         mc:Ignorable="d"
-        Title="Dotnet Project" Height="450" Width="800"
+        Title="Dotnet Project" Height="500" Width="800"
         d:DataContext="{d:DesignInstance Type=views:MainViewModel, IsDesignTimeCreatable=True}">
     <Window.Resources>
         <Style x:Key="MyLabels" TargetType="TextBlock">
@@ -25,33 +25,32 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" Background="Chartreuse">
-            <Button Content="Add Client" Command="{Binding AddCommand}" MinWidth="80" MinHeight="50"
+            <Button Content="{x:Static translations:Dico.AddClient}" Command="{Binding }" MinWidth="80" MinHeight="50"
                     VerticalAlignment="Center" Margin="6" Background="Aqua"/>
-            <Button Content="Edit Client" Command="{Binding DeleteCommand}" MinWidth="80" MinHeight="50"
+            <Button Content="{x:Static translations:Dico.EditClient}" Command="{Binding }" MinWidth="80" MinHeight="50"
                     VerticalAlignment="Center"  Margin="6" Background="Aqua"/>
-            <Button Content="Delete Client" Command="{Binding AddCommand}" MinWidth="80" MinHeight="50"
+            <Button Content="{x:Static translations:Dico.DeleteClient}" Command="{Binding }" MinWidth="80" MinHeight="50"
                     VerticalAlignment="Center" Margin="6" Background="Aqua"/>
-            <Button Content="Disable Client" Command="{Binding DeleteCommand}" MinWidth="80" MinHeight="50"
+            <Button Content="{x:Static translations:Dico.DisableClient}" Command="{Binding }" MinWidth="80" MinHeight="50"
                     VerticalAlignment="Center"  Margin="6" Background="Aqua"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Background="Chartreuse">
-            <CheckBox Content=" Show disabled clients" VerticalAlignment="Center" Background="Aqua"></CheckBox>
+            <CheckBox Content="{x:Static translations:Dico.Show}" VerticalAlignment="Center" Background="Aqua"> </CheckBox>
         </StackPanel>
-        <DataGrid Grid.Row="1" Margin="10" AlternatingRowBackground="LightBlue" ItemsSource="Binding">
+        <DataGrid Grid.Column="0" Grid.Row="1" Margin="10" AlternatingRowBackground="LightBlue" ItemsSource="Binding" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Last Name" Binding=""></DataGridTextColumn>
-                <DataGridTextColumn Header="First Name" Binding=""></DataGridTextColumn>
-                <DataGridTextColumn Header="Society" Binding=""></DataGridTextColumn>
-                <DataGridTextColumn Header="CP" Binding=""></DataGridTextColumn>
-                <DataGridTextColumn Header="Phone Number" Binding=""></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static translations:Dico.Libelle}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static translations:Dico.CreationDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static translations:Dico.PostalCode}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static translations:Dico.City}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBlock Margin="15">Client Details :</TextBlock>
+            <TextBlock Margin="15" Text="{x:Static translations:Dico.Title}"> :</TextBlock>
             <StackPanel Margin="0,290,0,0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button Content="Delete Client" Command="{Binding AddCommand}" MaxWidth="80" MinHeight="50"
+                <Button Content="{x:Static translations:Dico.Save}" Command="{Binding }" MaxWidth="90" MinHeight="50"
                         VerticalAlignment="Center" Margin="6" Background="IndianRed"/>
-                <Button Content="Disable Client" Command="{Binding DeleteCommand}" MaxWidth="80" MinHeight="50"
+                <Button Content="{x:Static translations:Dico.CancelSave}" Command="{Binding }" MaxWidth="90" MinHeight="50"
                         VerticalAlignment="Center"  Margin="6" Background="Orange"/>
             </StackPanel>
         </StackPanel>
