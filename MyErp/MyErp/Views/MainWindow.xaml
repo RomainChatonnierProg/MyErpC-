@@ -6,7 +6,7 @@
         xmlns:views="clr-namespace:MyErp.Views"
         xmlns:translations="clr-namespace:MyErp.Translation"
         mc:Ignorable="d"
-        Title="Dotnet Project" Height="500" Width="800"
+        Title="Dotnet Project" Height="500" Width="900"
         d:DataContext="{d:DesignInstance Type=views:MainViewModel, IsDesignTimeCreatable=True}">
     <Window.Resources>
         <Style x:Key="MyLabels" TargetType="TextBlock">
@@ -24,34 +24,35 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Horizontal" Background="Chartreuse">
-            <Button Content="{x:Static translations:Dico.AddClient}" Command="{Binding }" MinWidth="80" MinHeight="50"
-                    VerticalAlignment="Center" Margin="6" Background="Aqua"/>
+        <StackPanel Orientation="Horizontal" Background="Black">
+            <Button Content="{x:Static translations:Dico.AddClient}" Command="{Binding AddClient }" MinWidth="80" MinHeight="50"
+                    VerticalAlignment="Center" Margin="6" Background="LightGray"/>
             <Button Content="{x:Static translations:Dico.EditClient}" Command="{Binding }" MinWidth="80" MinHeight="50"
-                    VerticalAlignment="Center"  Margin="6" Background="Aqua"/>
+                    VerticalAlignment="Center"  Margin="6" Background="LightGray"/>
             <Button Content="{x:Static translations:Dico.DeleteClient}" Command="{Binding }" MinWidth="80" MinHeight="50"
-                    VerticalAlignment="Center" Margin="6" Background="Aqua"/>
+                    VerticalAlignment="Center" Margin="6" Background="LightGray"/>
             <Button Content="{x:Static translations:Dico.DisableClient}" Command="{Binding }" MinWidth="80" MinHeight="50"
-                    VerticalAlignment="Center"  Margin="6" Background="Aqua"/>
+                    VerticalAlignment="Center"  Margin="6" Background="LightGray"/>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Background="Chartreuse">
-            <CheckBox Content="{x:Static translations:Dico.Show}" VerticalAlignment="Center" Background="Aqua"> </CheckBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Background="Black">
+            <CheckBox Content="{x:Static translations:Dico.Show}" VerticalAlignment="Center" Background="LightGray" Foreground="White"> </CheckBox>
         </StackPanel>
-        <DataGrid Grid.Column="0" Grid.Row="1" Margin="10" AlternatingRowBackground="LightBlue" ItemsSource="Binding" AutoGenerateColumns="False">
+        <DataGrid Grid.Column="0" Grid.Row="1" Margin="10" AlternatingRowBackground="LightBlue" ItemsSource="{Binding Users}" AutoGenerateColumns="False" Background="LightGray" SelectedItem="{Binding SelectedUser}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="{x:Static translations:Dico.Libelle}"></DataGridTextColumn>
-                <DataGridTextColumn Header="{x:Static translations:Dico.CreationDate}"></DataGridTextColumn>
-                <DataGridTextColumn Header="{x:Static translations:Dico.PostalCode}"></DataGridTextColumn>
-                <DataGridTextColumn Header="{x:Static translations:Dico.City}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static translations:Dico.Libelle}" Binding="{Binding FullName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static translations:Dico.CreationDate}" Binding="{Binding CreateDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static translations:Dico.PostalCode}" Binding="{Binding PostalCode}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static translations:Dico.City}" Binding="{Binding City}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static translations:Dico.UserActive}" Binding="{Binding IsActive}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock Margin="15" Text="{x:Static translations:Dico.Title}"> :</TextBlock>
             <StackPanel Margin="0,290,0,0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button Content="{x:Static translations:Dico.Save}" Command="{Binding }" MaxWidth="90" MinHeight="50"
-                        VerticalAlignment="Center" Margin="6" Background="IndianRed"/>
+                        VerticalAlignment="Center" Margin="6" Background="LightGray"/>
                 <Button Content="{x:Static translations:Dico.CancelSave}" Command="{Binding }" MaxWidth="90" MinHeight="50"
-                        VerticalAlignment="Center"  Margin="6" Background="Orange"/>
+                        VerticalAlignment="Center"  Margin="6" Background="LightGray"/>
             </StackPanel>
         </StackPanel>
     </Grid>

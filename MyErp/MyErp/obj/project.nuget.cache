@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "pQ+J4JF5CMKC/YXdJBNPN1OF/fBW1l3sBGiEgYRMatIPYO/yoJtB6C+nt7FN0uyE6Qidk6uwD+cm9K/D6BxAiQ==",
+  "dgSpecHash": "Lq7TSNPwI1S4azWJDqyG5sfU+y95+5oskYtaVUdHiXyXf/sWlDzpD+LMPpOT0LRRoe+7pc8UwVE5ez7dI/wrwg==",
   "success": true,
   "projectFilePath": "C:\\Users\\John1\\Desktop\\cours\\dotnet\\doc projet\\MyErpC#\\MyErp\\MyErp\\MyErp.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\John1\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
     "C:\\Users\\John1\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\John1\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512"
   ],
