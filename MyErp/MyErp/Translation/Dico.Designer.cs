@@ -159,6 +159,15 @@ namespace MyErp.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Phone number.
+        /// </summary>
+        public static string PhoneNumber {
+            get {
+                return ResourceManager.GetString("PhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Postal code.
         /// </summary>
         public static string PostalCode {
@@ -182,6 +191,24 @@ namespace MyErp.Translation {
         public static string Show {
             get {
                 return ResourceManager.GetString("Show", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sirret.
+        /// </summary>
+        public static string Siret {
+            get {
+                return ResourceManager.GetString("Siret", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Society.
+        /// </summary>
+        public static string Society {
+            get {
+                return ResourceManager.GetString("Society", resourceCulture);
             }
         }
         

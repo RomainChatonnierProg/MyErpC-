@@ -8,7 +8,7 @@ namespace MyErp.Repository
     {
         Task Save(IList<Client> entities);
 
-        //Task<IList<Client>> Load();
+        Task<IList<Client>> Load();
     }
 }
 

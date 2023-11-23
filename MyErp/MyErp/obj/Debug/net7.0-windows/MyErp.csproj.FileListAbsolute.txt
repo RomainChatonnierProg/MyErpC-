@@ -53,3 +53,4 @@ C:\Users\John1\Desktop\cours\dotnet\doc projet\MyErpC#\MyErp\MyErp\obj\Debug\net
 C:\Users\John1\Desktop\cours\dotnet\doc projet\MyErpC#\MyErp\MyErp\obj\Debug\net7.0-windows\MyErp.pdb
 C:\Users\John1\Desktop\cours\dotnet\doc projet\MyErpC#\MyErp\MyErp\obj\Debug\net7.0-windows\MyErp.genruntimeconfig.cache
 C:\Users\John1\Desktop\cours\dotnet\doc projet\MyErpC#\MyErp\MyErp\obj\Debug\net7.0-windows\ref\MyErp.dll
+C:\Users\John1\Desktop\cours\dotnet\doc projet\MyErpC#\MyErp\MyErp\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs

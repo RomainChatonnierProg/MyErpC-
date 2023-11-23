@@ -66,4 +66,13 @@
     <data name="Show" xml:space="preserve">
         <value>Montrer les utilisateurs inactif</value>
     </data>
+    <data name="Society" xml:space="preserve">
+        <value>Société</value>
+    </data>
+    <data name="Siret" xml:space="preserve">
+        <value>Siret</value>
+    </data>
+    <data name="PhoneNumber" xml:space="preserve">
+        <value>Téléphone</value>
+    </data>
 </root>

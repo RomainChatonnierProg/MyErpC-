@@ -66,4 +66,13 @@
     <data name="Show" xml:space="preserve">
         <value>Show disabled clients</value>
     </data>
+    <data name="Society" xml:space="preserve">
+        <value>Society</value>
+    </data>
+    <data name="Siret" xml:space="preserve">
+        <value>Sirret</value>
+    </data>
+    <data name="PhoneNumber" xml:space="preserve">
+        <value>Phone number</value>
+    </data>
 </root>

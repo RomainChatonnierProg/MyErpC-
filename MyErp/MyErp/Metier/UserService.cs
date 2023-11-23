@@ -36,10 +36,10 @@ namespace MyErp.Metier
             _repository.Save(users).Wait();
         }
 
-        // public IList<Client> Load()
-        // {
-        //     return _repository.Load().Result;
-        // }
+         public IList<Client> Load()
+         { 
+             return _repository.Load().Result;
+         }
 
         public Client CreateClient()
         {
@@ -47,14 +47,14 @@ namespace MyErp.Metier
             return new Client
             {
                 FirstName = "Romain",
-                LastName = "Chatonnier",
+                LastName = "Chatonn",
                 IsActive = true,
                 CreateDate = new DateTime(2020, 1, 1),
-                Sirret = 123456789,
+                Siret = "123456789",
                 Society = "Chato Corp",
                 City = "Tours",
-                PhoneNumber = 0612345678,
-                PostalCode = 63000
+                PhoneNumber = "0612345678",
+                PostalCode = "63000"
             };
         }
     }

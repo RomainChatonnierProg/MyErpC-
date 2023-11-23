@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Windows;
+using System.Linq;
 using CommunityToolkit.Mvvm.Input;
 using MyErp.Base;
+using MyErp.Translation;
 using MyErp.Entities;
 using MyErp.Metier;
 
@@ -12,6 +16,8 @@ namespace MyErp.Views
     internal class MainViewModel:ViewModelBase
     {
         private UserService _userService;
+        
+        public List<string> AvailableLanguages { get; }
         
         public ObservableCollection<Client> Users { get; }
         
@@ -35,38 +41,16 @@ namespace MyErp.Views
             _userService = userService;
             
             SaveCommand = new RelayCommand(OnSave);
-            
             AddClient = new RelayCommand(OnAdd);
-            
             DeleteCommand = new RelayCommand(OnDelete,CanDelete);
             
-            Users = new ObservableCollection<Client>()
-            {
-                new Client()
-                {
-                    FirstName = "Isaac", LastName = "Newton",
-                    CreateDate = new DateTime(1643, 10, 2),
-                    Society = "Gravity Inc", IsActive = true,
-                    Sirret =12356894100056, PostalCode = 53000,
-                    City = "Kensington", PhoneNumber = 0612345678
-                },
-                new Client()
-                {
-                    FirstName = "Albert", LastName = "Einstein",
-                    CreateDate = new DateTime(1879, 10, 2),
-                    Society = "Restrain Gravity Motors", IsActive = false,
-                    Sirret =12356894100057, PostalCode = 18000,
-                    City = "Ulm", PhoneNumber = 0612345679
-                },
-                new Client()
-                {
-                    FirstName = "Louis", LastName = "Paster",
-                    CreateDate = new DateTime(1822, 6, 28),
-                    Society = "Vaccin cr", IsActive = true,
-                    Sirret =12356894100058, PostalCode = 63000,
-                    City = "Clermont", PhoneNumber = 0612345671
-                },
-            };
+            AvailableLanguages = CultureInfo
+                .GetCultures(CultureTypes.NeutralCultures)
+                .Select(x => x.DisplayName)
+                .ToList();
+
+            Users = new ObservableCollection<Client>(_userService.Load());
+
         }
         
         private void OnAdd()

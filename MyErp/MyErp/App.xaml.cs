@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
+using MyErp.Metier;
+using MyErp.Repository;
 using MyErp.Views;
 
 namespace MyErp
@@ -29,6 +31,8 @@ namespace MyErp
         {
             var services = new ServiceCollection();
             services.AddTransient<MainViewModel>();
+            services.AddTransient<UserService>();
+            services.AddTransient<IUserRepository, JsonFileUserRepository>();
             return services.BuildServiceProvider();
         }
 
