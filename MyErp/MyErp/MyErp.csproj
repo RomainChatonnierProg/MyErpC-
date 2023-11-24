@@ -10,6 +10,7 @@
 	<ItemGroup>
 	<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 	<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+	<PackageReference Include="SharpVectors" Version="1.8.2" />
     </ItemGroup>
 
 	<ItemGroup>
@@ -25,5 +26,24 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>Dico.resx</DependentUpon>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Assets\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Assets\cancel.svg" />
+	  <Resource Include="Assets\cancel.svg" />
+	  <None Remove="Assets\delete.svg" />
+	  <Resource Include="Assets\delete.svg" />
+	  <None Remove="Assets\disable.svg" />
+	  <Resource Include="Assets\disable.svg" />
+	  <None Remove="Assets\edit.svg" />
+	  <Resource Include="Assets\edit.svg" />
+	  <None Remove="Assets\save.svg" />
+	  <Resource Include="Assets\save.svg" />
+	  <None Remove="Assets\user-add.svg" />
+	  <Resource Include="Assets\user-add.svg" />
 	</ItemGroup>
 </Project>

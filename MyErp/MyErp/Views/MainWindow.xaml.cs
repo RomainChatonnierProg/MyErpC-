@@ -25,8 +25,19 @@ namespace MyErp
         public MainWindow()
         {
             InitializeComponent();
+            (DataContext as MainViewModel)?.ToggleVisibility(true);
             DataContext = App.Services.GetRequiredService<MainViewModel>();
+        }
+        private void CheckBox_Checked(object? sender, RoutedEventArgs? e)
+        {
+            // Afficher uniquement les clients actifs
+            (DataContext as MainViewModel)?.ToggleVisibility(false);
+        }
 
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            // Afficher tous les clients
+            (DataContext as MainViewModel)?.ToggleVisibility(true);
         }
     }
 }

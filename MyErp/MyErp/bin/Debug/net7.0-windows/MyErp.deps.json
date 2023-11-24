@@ -9,7 +9,8 @@
       "MyErp/1.0.0": {
         "dependencies": {
           "CommunityToolkit.Mvvm": "8.2.2",
-          "Microsoft.Extensions.DependencyInjection": "7.0.0"
+          "Microsoft.Extensions.DependencyInjection": "7.0.0",
+          "SharpVectors": "1.8.2"
         },
         "runtime": {
           "MyErp.dll": {}
@@ -46,6 +47,42 @@
             "fileVersion": "7.0.22.51805"
           }
         }
+      },
+      "SharpVectors/1.8.2": {
+        "runtime": {
+          "lib/net7.0-windows7.0/SharpVectors.Converters.Wpf.dll": {
+            "assemblyVersion": "1.8.2.0",
+            "fileVersion": "1.8.2.0"
+          },
+          "lib/net7.0-windows7.0/SharpVectors.Core.dll": {
+            "assemblyVersion": "1.8.2.0",
+            "fileVersion": "1.8.2.0"
+          },
+          "lib/net7.0-windows7.0/SharpVectors.Css.dll": {
+            "assemblyVersion": "1.8.2.0",
+            "fileVersion": "1.8.2.0"
+          },
+          "lib/net7.0-windows7.0/SharpVectors.Dom.dll": {
+            "assemblyVersion": "1.8.2.0",
+            "fileVersion": "1.8.2.0"
+          },
+          "lib/net7.0-windows7.0/SharpVectors.Model.dll": {
+            "assemblyVersion": "1.8.2.0",
+            "fileVersion": "1.8.2.0"
+          },
+          "lib/net7.0-windows7.0/SharpVectors.Rendering.Gdi.dll": {
+            "assemblyVersion": "1.8.2.0",
+            "fileVersion": "1.8.2.0"
+          },
+          "lib/net7.0-windows7.0/SharpVectors.Rendering.Wpf.dll": {
+            "assemblyVersion": "1.8.2.0",
+            "fileVersion": "1.8.2.0"
+          },
+          "lib/net7.0-windows7.0/SharpVectors.Runtime.Wpf.dll": {
+            "assemblyVersion": "1.8.2.0",
+            "fileVersion": "1.8.2.0"
+          }
+        }
       }
     }
   },
@@ -75,6 +112,13 @@
       "sha512": "sha512-h3j/QfmFN4S0w4C2A6X7arXij/M/OVw3uQHSOFxnND4DyAzO1F9eMX7Eti7lU/OkSthEE0WzRsfT/Dmx86jzCw==",
       "path": "microsoft.extensions.dependencyinjection.abstractions/7.0.0",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512"
+    },
+    "SharpVectors/1.8.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dmQiQTYVZDGKUeINY5g9cKFOgU4zq6LsnXTrwce0pj1sfP4GxOOt9idcp48a8PyXcNoPrXq/XtQ2L/MvOP0YpA==",
+      "path": "sharpvectors/1.8.2",
+      "hashPath": "sharpvectors.1.8.2.nupkg.sha512"
     }
   }
 }

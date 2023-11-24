@@ -7,21 +7,21 @@
         xmlns:translations="clr-namespace:MyErp.Translation"
         xmlns:converters="clr-namespace:MyErp.Converters"
         xmlns:entities="clr-namespace:MyErp.Entities"
+        xmlns:base="clr-namespace:MyErp.Base"
+        xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
         mc:Ignorable="d"
         Title="Dotnet Project" Height="500" Width="900"
         d:DataContext="{d:DesignInstance Type=views:MainViewModel, IsDesignTimeCreatable=True}">
     <Window.Resources>
-        <Style x:Key="MyLabels" TargetType="TextBlock">
-            <Setter Property="Margin" Value="6"></Setter>
-            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
-        </Style>
         <Style x:Key="TextBoxModif" TargetType="TextBox">
             <Setter Property="Background" Value="Transparent"></Setter>
             <Setter Property="BorderThickness" Value="0"></Setter>
         </Style>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <base:BindingProxy x:Key ="MonProxy" Data="{Binding Path=.}" />
         <converters:NullToCollapseConverter x:Key="NullToCollapseConverter"/>
     </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -31,20 +31,83 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
         <StackPanel Orientation="Horizontal" Background="Black">
-            <Button Content="{x:Static translations:Dico.AddClient}" Command="{Binding AddClient }" MinWidth="80" MinHeight="50"
-                    VerticalAlignment="Center" Margin="6" Background="LightGray"/>
-            <Button Content="{x:Static translations:Dico.EditClient}" MinWidth="80" MinHeight="50"
-                    VerticalAlignment="Center"  Margin="6" Background="LightGray"/>
-            <Button Content="{x:Static translations:Dico.DeleteClient}" Command="{Binding DeleteCommand}" MinWidth="80" MinHeight="50"
-                    VerticalAlignment="Center" Margin="6" Background="LightGray"/>
-            <Button Content="{x:Static translations:Dico.DisableClient}" MinWidth="80" MinHeight="50"
-                    VerticalAlignment="Center"  Margin="6" Background="LightGray"/>
+            
+            <Button Command="{Binding AddClient }" MinWidth="80" MinHeight="50"
+                    VerticalAlignment="Center" Margin="6" Background="LightGray">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="{x:Static translations:Dico.AddClient}"/>
+                    <svgc:SvgViewbox Source="/assets/user-add.svg" Width="15" Height="15" Margin="5,0,0,0"/>
+                </StackPanel>
+            </Button>
+            
+            <Button MinWidth="80" MinHeight="50"
+                    VerticalAlignment="Center"  Margin="6" Background="LightGray">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="{x:Static translations:Dico.EditClient}"/>
+                    <svgc:SvgViewbox Source="/assets/edit.svg" Width="15" Height="15" Margin="5,0,0,0"/>
+                </StackPanel>
+            </Button>
+            
+            <Button Command="{Binding DeleteCommand}" MinWidth="80" MinHeight="50"
+                    VerticalAlignment="Center" Margin="6" Background="LightGray">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="{x:Static translations:Dico.DeleteClient}"/>
+                    <svgc:SvgViewbox Source="/assets/delete.svg" Width="15" Height="15" Margin="5,0,0,0"/>
+                </StackPanel>
+            </Button>
+            
+            <Button Command="{Binding ToggleActivationCommand}" MinWidth="80" MinHeight="50"
+                    VerticalAlignment="Center"  Margin="6" Background="LightGray">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock>
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Text" Value="{x:Static translations:Dico.DisableClient}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SelectedUser.IsActive}" Value="True">
+                                        <Setter Property="Text" Value="{x:Static translations:Dico.EnableClient}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                        <svgc:SvgViewbox Source="/assets/disable.svg" Width="15" Height="15" Margin="5,0,0,0"/>
+                    </TextBlock>
+                </StackPanel>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedUser}" Value="{x:Null}">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            
         </StackPanel>
+        
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Background="Black">
-            <CheckBox Content="{x:Static translations:Dico.Show}" VerticalAlignment="Center" Background="LightGray" Foreground="White"> </CheckBox>
+            <CheckBox Content="{x:Static translations:Dico.Show}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" VerticalAlignment="Center" Background="LightGray" Foreground="White"> </CheckBox>
         </StackPanel>
-        <DataGrid Grid.Column="0" Grid.Row="1" Margin="10" AlternatingRowBackground="LightBlue" ItemsSource="{Binding Users}" AutoGenerateColumns="False" Background="LightGray" SelectedItem="{Binding SelectedUser}">
+        
+        <DataGrid Grid.Column="0" Grid.Row="1" Name="DataGrid1" Margin="10" ItemsSource="{Binding Users}" AutoGenerateColumns="False" Background="White" SelectedItem="{Binding SelectedUser}" GridLinesVisibility="None">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        
+                        <DataTrigger Binding="{Binding IsVisible}" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                        
+                        <DataTrigger Binding="{Binding IsActive}" Value="False">
+                            <Setter Property="Background" Value="LightGray"/>
+                        </DataTrigger>
+                        
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="{x:Static translations:Dico.Libelle}" Binding="{Binding FullName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="{x:Static translations:Dico.CreationDate}" Binding="{Binding CreateDate}"></DataGridTextColumn>
@@ -53,62 +116,86 @@
                 <DataGridTextColumn Header="{x:Static translations:Dico.UserActive}" Binding="{Binding IsActive}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <ContentControl Grid.Column="1" Grid.Row="1" Visibility="{Binding SelectedUser ,Converter={StaticResource NullToCollapseConverter}}"
-                        Content="{Binding SelectedUser}">
-            <ContentControl.ContentTemplate>
-                <DataTemplate DataType="{x:Type entities:Client}">
-                    <Grid Name="Grid1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <TextBlock Margin="10" Text="{x:Static translations:Dico.Title}"></TextBlock>
-                        <TextBlock Margin="7" Text="{x:Static translations:Dico.Society}" Grid.Row="1"> :</TextBlock>
-                        <TextBlock Margin="7" Text="{x:Static translations:Dico.FirstName}" Grid.Row="2"> :</TextBlock>
-                        <TextBlock Margin="7" Text="{x:Static translations:Dico.LastName}" Grid.Row="3"> :</TextBlock>
-                        <TextBlock Margin="7" Text="{x:Static translations:Dico.Siret}" Grid.Row="4"> :</TextBlock>
-                        <TextBlock Margin="7" Text="{x:Static translations:Dico.CreationDate}" Grid.Row="5"> :</TextBlock>
-                        <TextBlock Margin="7" Text="{x:Static translations:Dico.City}" Grid.Row="6"> :</TextBlock>
-                        <TextBlock Margin="7" Text="{x:Static translations:Dico.PostalCode}" Grid.Row="7"> :</TextBlock>
-                        <TextBlock Margin="7" Text="{x:Static translations:Dico.PhoneNumber}" Grid.Row="8"> :</TextBlock>
-                        <TextBlock Margin="7" Text="{x:Static translations:Dico.UserActive}" Grid.Row="9"> :</TextBlock>
+        
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ContentControl Grid.Column="0" Grid.Row="0" Visibility="{Binding SelectedUser ,Converter={StaticResource NullToCollapseConverter}}"
+                            Content="{Binding SelectedUser}">
+                <ContentControl.ContentTemplate>
+                    <DataTemplate DataType="{x:Type entities:Client}">
+                        <Grid Name="Grid1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Margin="10" Text="{x:Static translations:Dico.Title}"></TextBlock>
+                            <TextBlock Margin="7" Text="{x:Static translations:Dico.Society}" Grid.Row="1"> :</TextBlock>
+                            <TextBlock Margin="7" Text="{x:Static translations:Dico.FirstName}" Grid.Row="2"> :</TextBlock>
+                            <TextBlock Margin="7" Text="{x:Static translations:Dico.LastName}" Grid.Row="3"> :</TextBlock>
+                            <TextBlock Margin="7" Text="{x:Static translations:Dico.Siret}" Grid.Row="4"> :</TextBlock>
+                            <TextBlock Margin="7" Text="{x:Static translations:Dico.CreationDate}" Grid.Row="5"> :</TextBlock>
+                            <TextBlock Margin="7" Text="{x:Static translations:Dico.City}" Grid.Row="6"> :</TextBlock>
+                            <TextBlock Margin="7" Text="{x:Static translations:Dico.PostalCode}" Grid.Row="7"> :</TextBlock>
+                            <TextBlock Margin="7" Text="{x:Static translations:Dico.PhoneNumber}" Grid.Row="8"> :</TextBlock>
+                            <TextBlock Margin="7" Text="{x:Static translations:Dico.UserActive}" Grid.Row="9"> :</TextBlock>
+                        
+                            <TextBox Margin="7" Grid.Row="1" Grid.Column="1" Text="{Binding Society}" Style="{StaticResource TextBoxModif}"></TextBox>
+                            <TextBox Margin="7" Grid.Row="2" Grid.Column="1" Text="{Binding FirstName}" Style="{StaticResource TextBoxModif}"></TextBox>
+                            <TextBox Margin="7" Grid.Row="3" Grid.Column="1" Text="{Binding LastName}" Style="{StaticResource TextBoxModif}"></TextBox>
+                            <TextBox Margin="7" Grid.Row="4" Grid.Column="1" Text="{Binding Siret}" Style="{StaticResource TextBoxModif}"></TextBox>
+                            <TextBox Margin="7" Grid.Row="5" Grid.Column="1" Text="{Binding CreateDate}" Style="{StaticResource TextBoxModif}"></TextBox>
+                            <TextBox Margin="7" Grid.Row="6" Grid.Column="1" Text="{Binding City}" Style="{StaticResource TextBoxModif}"></TextBox>
+                            <TextBox Margin="7" Grid.Row="7" Grid.Column="1" Text="{Binding PostalCode}" Style="{StaticResource TextBoxModif}"></TextBox>
+                            <TextBox Margin="7" Grid.Row="8" Grid.Column="1" Text="{Binding PhoneNumber}" Style="{StaticResource TextBoxModif}"></TextBox>
+                            <TextBox Margin="7" Grid.Row="9" Grid.Column="1" Text="{Binding IsActive}" Style="{StaticResource TextBoxModif}"></TextBox>
+                            
+                            
+                        </Grid>
+                        
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding .}"  Value="{x:Null}">
+                                <Setter TargetName="Grid1" Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                        
+                    </DataTemplate>
                     
-                        <TextBox Margin="7" Grid.Row="1" Grid.Column="1" Text="{Binding Society}" Style="{StaticResource TextBoxModif}"></TextBox>
-                        <TextBox Margin="7" Grid.Row="2" Grid.Column="1" Text="{Binding FirstName}" Style="{StaticResource TextBoxModif}"></TextBox>
-                        <TextBox Margin="7" Grid.Row="3" Grid.Column="1" Text="{Binding LastName}" Style="{StaticResource TextBoxModif}"></TextBox>
-                        <TextBox Margin="7" Grid.Row="4" Grid.Column="1" Text="{Binding Siret}" Style="{StaticResource TextBoxModif}"></TextBox>
-                        <TextBox Margin="7" Grid.Row="5" Grid.Column="1" Text="{Binding CreateDate}" Style="{StaticResource TextBoxModif}"></TextBox>
-                        <TextBox Margin="7" Grid.Row="6" Grid.Column="1" Text="{Binding City}" Style="{StaticResource TextBoxModif}"></TextBox>
-                        <TextBox Margin="7" Grid.Row="7" Grid.Column="1" Text="{Binding PostalCode}" Style="{StaticResource TextBoxModif}"></TextBox>
-                        <TextBox Margin="7" Grid.Row="8" Grid.Column="1" Text="{Binding PhoneNumber}" Style="{StaticResource TextBoxModif}"></TextBox>
-                        <TextBox Margin="7" Grid.Row="9" Grid.Column="1" Text="{Binding IsActive}" Style="{StaticResource TextBoxModif}"></TextBox>
-                        
-                        <Button Grid.Column="0" Grid.Row="10"  Content="{x:Static translations:Dico.Save}" Command="{Binding }"
-                                VerticalAlignment="Center" HorizontalAlignment="Center" Margin="6" Background="LightGray"/>
-                        <Button Grid.Column="1" Grid.Row="10" Content="{x:Static translations:Dico.CancelSave}" Command="{Binding }"
-                                VerticalAlignment="Center" HorizontalAlignment="Center" Margin="6" Background="LightGray"/>
-                        
-                    </Grid>
-                    <DataTemplate.Triggers>
-                        <DataTrigger Binding="{Binding .}"  Value="{x:Null}">
-                            <Setter TargetName="Grid1" Property="Visibility" Value="Collapsed"/>
-                        </DataTrigger>
-                    </DataTemplate.Triggers>
-                </DataTemplate>
-            </ContentControl.ContentTemplate>
-        </ContentControl>
+                </ContentControl.ContentTemplate>
+            </ContentControl>
+            
+            <Button Grid.Column="0" Grid.Row="1"   Command="{Binding SaveCommand}" Margin="6" Padding="10" Background="LightGray">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="{x:Static translations:Dico.Save}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <svgc:SvgViewbox Source="/assets/save.svg" Width="15" Height="15" Margin="5,0,0,0"/>
+                </StackPanel>
+            </Button>
+            
+            <Button Grid.Column="1" Grid.Row="1"  Command="{Binding }" Margin="6" Padding="10" Background="LightGray">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="{x:Static translations:Dico.CancelSave}"/>
+                    <svgc:SvgViewbox Source="/assets/cancel.svg" Width="15" Height="15" Margin="5,0,0,0"/>
+                </StackPanel>
+            </Button>
+        </Grid>
     </Grid>
 </Window>

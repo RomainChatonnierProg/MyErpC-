@@ -54,3 +54,11 @@ C:\Users\John1\Desktop\cours\dotnet\doc projet\MyErpC#\MyErp\MyErp\obj\Debug\net
 C:\Users\John1\Desktop\cours\dotnet\doc projet\MyErpC#\MyErp\MyErp\obj\Debug\net7.0-windows\MyErp.genruntimeconfig.cache
 C:\Users\John1\Desktop\cours\dotnet\doc projet\MyErpC#\MyErp\MyErp\obj\Debug\net7.0-windows\ref\MyErp.dll
 C:\Users\John1\Desktop\cours\dotnet\doc projet\MyErpC#\MyErp\MyErp\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\John1\Desktop\cours\dotnet\doc projet\MyErpC#\MyErp\MyErp\bin\Debug\net7.0-windows\SharpVectors.Converters.Wpf.dll
+C:\Users\John1\Desktop\cours\dotnet\doc projet\MyErpC#\MyErp\MyErp\bin\Debug\net7.0-windows\SharpVectors.Core.dll
+C:\Users\John1\Desktop\cours\dotnet\doc projet\MyErpC#\MyErp\MyErp\bin\Debug\net7.0-windows\SharpVectors.Css.dll
+C:\Users\John1\Desktop\cours\dotnet\doc projet\MyErpC#\MyErp\MyErp\bin\Debug\net7.0-windows\SharpVectors.Dom.dll
+C:\Users\John1\Desktop\cours\dotnet\doc projet\MyErpC#\MyErp\MyErp\bin\Debug\net7.0-windows\SharpVectors.Model.dll
+C:\Users\John1\Desktop\cours\dotnet\doc projet\MyErpC#\MyErp\MyErp\bin\Debug\net7.0-windows\SharpVectors.Rendering.Gdi.dll
+C:\Users\John1\Desktop\cours\dotnet\doc projet\MyErpC#\MyErp\MyErp\bin\Debug\net7.0-windows\SharpVectors.Rendering.Wpf.dll
+C:\Users\John1\Desktop\cours\dotnet\doc projet\MyErpC#\MyErp\MyErp\bin\Debug\net7.0-windows\SharpVectors.Runtime.Wpf.dll

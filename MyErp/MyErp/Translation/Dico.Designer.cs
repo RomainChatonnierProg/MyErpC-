@@ -123,6 +123,15 @@ namespace MyErp.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable client.
+        /// </summary>
+        public static string EnableClient {
+            get {
+                return ResourceManager.GetString("EnableClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First name.
         /// </summary>
         public static string FirstName {

@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Lq7TSNPwI1S4azWJDqyG5sfU+y95+5oskYtaVUdHiXyXf/sWlDzpD+LMPpOT0LRRoe+7pc8UwVE5ez7dI/wrwg==",
+  "dgSpecHash": "gHYqvYu+OO5Uzk1Qf1yyCsug7/Vqg006gigDyZlinHt4Kpd+lSwF60fH5Ksf/LwvsywWN2BDRWfCi1XqdYbHuQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\John1\\Desktop\\cours\\dotnet\\doc projet\\MyErpC#\\MyErp\\MyErp\\MyErp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\John1\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
     "C:\\Users\\John1\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
-    "C:\\Users\\John1\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512"
+    "C:\\Users\\John1\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\John1\\.nuget\\packages\\sharpvectors\\1.8.2\\sharpvectors.1.8.2.nupkg.sha512"
   ],
   "logs": []
 }

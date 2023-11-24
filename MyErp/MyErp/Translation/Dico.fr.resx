@@ -75,4 +75,7 @@
     <data name="PhoneNumber" xml:space="preserve">
         <value>Téléphone</value>
     </data>
+    <data name="EnableClient" xml:space="preserve">
+        <value>Activer</value>
+    </data>
 </root>

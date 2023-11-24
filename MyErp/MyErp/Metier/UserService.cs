@@ -46,15 +46,15 @@ namespace MyErp.Metier
 
             return new Client
             {
-                FirstName = "Romain",
-                LastName = "Chatonn",
+                FirstName = "AAA",
+                LastName = "AAA",
                 IsActive = true,
-                CreateDate = new DateTime(2020, 1, 1),
-                Siret = "123456789",
-                Society = "Chato Corp",
+                CreateDate = new DateTime(2021, 1, 1),
+                Siret = "987654321",
+                Society = "BBB",
                 City = "Tours",
-                PhoneNumber = "0612345678",
-                PostalCode = "63000"
+                PhoneNumber = "0698765432",
+                PostalCode = "67000"
             };
         }
     }

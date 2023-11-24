@@ -16,6 +16,7 @@ namespace MyErp.Entities
         private string _CP;
         private string _phoneNumber;
         private Boolean _isActive;
+        private bool _isVisible;
         
         public string FirstName
         {
@@ -83,6 +84,17 @@ namespace MyErp.Entities
         public string toString()
         {
             return FullName;
+        }
+        
+        
+        public bool IsVisible
+        {
+            get => _isVisible;
+            set
+            {
+                SetProperty(ref _isVisible, value);
+                OnPropertyChanged();
+            }
         }
     }
 }
