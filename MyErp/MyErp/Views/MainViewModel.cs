@@ -65,7 +65,7 @@ namespace MyErp.Views
 
         private void OnAdd()
         {
-            Users.Add(_userService.CreateClient());
+            Users.Add(UserService.CreateClient());
             try
             {
                 _userService.Save(Users);
@@ -88,20 +88,28 @@ namespace MyErp.Views
         }
         private void OnDelete()
         {
-            Users.Remove(_selectedUser);
-            try
+            if (_selectedUser != null && _userService.CanDeleteClient(_selectedUser))
             {
-                _userService.Save(Users);
+                Users.Remove(_selectedUser);
+
+                try
+                {
+                    _userService.Save(Users);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
             }
-            catch (Exception e)
+            else
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show("Unable to delete an active client.");
             }
         }
 
         private bool CanDelete()
         {
-            return _selectedUser != null ;
+            return _selectedUser != null && _userService.CanDeleteClient(_selectedUser);
         }
         
         private void SortUsers()
