@@ -1,24 +1,29 @@
 ﻿using System;
-using System.Configuration;
-using System.ComponentModel.DataAnnotations;
 using MyErp.Base;
 
 namespace MyErp.Entities
 {
     public class Client : ViewModelBase
     {
-        private string _lastName;
-        private string _firstName;
-        private string _siret;
-        private string _societyName;
+        private int _id;
+        private string? _lastName;
+        private string? _firstName;
+        private string? _siret;
+        private string? _societyName;
         private DateTime _createDate;
-        private string _city;
-        private string _CP;
-        private string _phoneNumber;
+        private string? _city;
+        private string? _cp;
+        private string? _phoneNumber;
         private Boolean _isActive;
         private bool _isVisible;
         
-        public string FirstName
+        public int Id
+        {
+            get => _id;
+            set => SetProperty(ref _id, value);
+        }
+        
+        public string? FirstName
         {
             get => _firstName;
             set
@@ -28,7 +33,7 @@ namespace MyErp.Entities
             }
         }
 
-        public string LastName
+        public string? LastName
         {
             get => _lastName;
             set
@@ -46,13 +51,13 @@ namespace MyErp.Entities
             set => SetProperty(ref _isActive, value);
         }
         
-        public string Siret
+        public string? Siret
         {
             get => _siret;
             set => SetProperty(ref _siret, value);
         }
         
-        public string Society
+        public string? Society
         {
             get => _societyName;
             set => SetProperty(ref _societyName, value);
@@ -64,28 +69,23 @@ namespace MyErp.Entities
             set => SetProperty(ref _createDate, value);
         }
         
-        public string City
+        public string? City
         {
             get => _city;
             set => SetProperty(ref _city, value);
         }
         
-        public string PostalCode
+        public string? PostalCode
         {
-            get => _CP;
-            set => SetProperty(ref _CP, value);
+            get => _cp;
+            set => SetProperty(ref _cp, value);
         }
         
-        public string PhoneNumber
+        public string? PhoneNumber
         {
             get => _phoneNumber;
             set => SetProperty(ref _phoneNumber, value);
         }
-        public string toString()
-        {
-            return FullName;
-        }
-        
         
         public bool IsVisible
         {

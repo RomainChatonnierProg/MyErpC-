@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Globalization;
 using System.Windows;
 using System.Linq;
-using System.Windows.Controls;
-using System.Windows.Data;
 using CommunityToolkit.Mvvm.Input;
 using MyErp.Base;
-using MyErp.Translation;
 using MyErp.Entities;
 using MyErp.Metier;
 
@@ -19,8 +13,6 @@ namespace MyErp.Views
     internal class MainViewModel:ViewModelBase
     {
         private UserService _userService;
-        
-        public List<string> AvailableLanguages { get; }
         
         public ObservableCollection<Client> Users { get; set; }
         
@@ -40,6 +32,7 @@ namespace MyErp.Views
         public RelayCommand AddClient { get; private set; }
         public RelayCommand DeleteCommand { get; private set; }
         public RelayCommand ToggleActivationCommand { get; private set; }
+        public RelayCommand CancelSaveCommand {get; private set; }
 
         public MainViewModel(UserService userService)
         {
@@ -49,23 +42,18 @@ namespace MyErp.Views
             AddClient = new RelayCommand(OnAdd);
             DeleteCommand = new RelayCommand(OnDelete,CanDelete);
             ToggleActivationCommand = new RelayCommand(OnToggleActivation, CanToggleActivation);
+            CancelSaveCommand = new RelayCommand(CancelSave, CanCancelSave);
             
-            
-            
-            AvailableLanguages = CultureInfo
-                .GetCultures(CultureTypes.NeutralCultures)
-                .Select(x => x.DisplayName)
-                .ToList();
 
             Users = new ObservableCollection<Client>(_userService.Load());
             
             SortUsers();
 
         }
-
+        
         private void OnAdd()
         {
-            Users.Add(UserService.CreateClient());
+            Users.Add(_userService.CreateClient());
             try
             {
                 _userService.Save(Users);
@@ -77,6 +65,7 @@ namespace MyErp.Views
         }
         private void OnSave()
         {
+            if (_selectedUser == null) return;
             try
             {
                 _userService.Save(Users);
@@ -146,6 +135,31 @@ namespace MyErp.Views
             }
         }
         
+        private async void CancelSave()
+        {
+            if (_selectedUser != null)
+            {
+                // Recharge les informations du client sélectionné depuis le service
+                var reloadedUserTask = _userService.GetUser(_selectedUser.Id);
+
+                // Attend que la tâche soit terminée et obtient le résultat
+                var reloadedUser = await reloadedUserTask;
+
+                if (reloadedUser != null)
+                {
+                    // Met à jour le client sélectionné avec les informations rechargées
+                    var index = Users.IndexOf(_selectedUser);
+                    Users[index] = reloadedUser;
+
+                    // Informe la vue que le client sélectionné a été modifié
+                    OnPropertyChanged(nameof(Users));
+                }
+            }
+        }
         
+        private bool CanCancelSave()
+        {
+            return _selectedUser != null;
+        }
     }
 }

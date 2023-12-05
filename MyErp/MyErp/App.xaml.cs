@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
+using MyErp.Base;
+using MyErp.Converters;
 using MyErp.Metier;
 using MyErp.Repository;
+using MyErp.Translation;
 using MyErp.Views;
 
 namespace MyErp
@@ -33,6 +31,9 @@ namespace MyErp
             services.AddTransient<MainViewModel>();
             services.AddTransient<UserService>();
             services.AddTransient<IUserRepository, JsonFileUserRepository>();
+            services.AddTransient<Dico>();
+            services.AddTransient<ViewModelBase>();
+            services.AddTransient<NullToCollapseConverter>();
             return services.BuildServiceProvider();
         }
 
