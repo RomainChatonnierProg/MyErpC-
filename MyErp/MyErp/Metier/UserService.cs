@@ -16,10 +16,10 @@ namespace MyErp.Metier
             _repository = repository;
         }
         
-        public Task<Client?> GetUser(int userId)
-        {
-            return _repository.GetUser(userId);
-        }
+        // public Task<Client?> GetUser(int userId)
+        // {
+        //     return _repository.GetUser(userId);
+        // }
         
         public void Save(IList<Client> users)
         {
@@ -35,8 +35,11 @@ namespace MyErp.Metier
             if (!IsUniqueNames(users))
                 throw new Exception("Duplicate name or full name among users");
 
-            if (users.Any(x => x.PostalCode != null && string.IsNullOrEmpty(x.PostalCode) && (x.PostalCode.Length >= 10)))
+            if (users.Any(x => x.PostalCode != null && x.PostalCode.Length >= 10))
+            {
                 throw new Exception("The postal code must be less than 10 characters long.");
+            }
+
 
             if (users.Any(user => !string.IsNullOrEmpty(user.Society) && string.IsNullOrEmpty(user.Siret)))
             {
@@ -92,6 +95,10 @@ namespace MyErp.Metier
         
         public bool CanDeleteClient(Client? client)
         {
+            if (client.IsActive == true)
+            {
+                throw new Exception("Unable to delete an active client");
+            }
             return client != null && !client.IsActive;
         }
     }

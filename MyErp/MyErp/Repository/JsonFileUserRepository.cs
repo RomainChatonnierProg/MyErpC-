@@ -11,7 +11,7 @@ namespace MyErp.Repository
     {
         private const string UserFileName = "Users.json";
 
-        public void Save(IList<Client> models)
+        public async Task Save(IList<Client> models)
         {
             var serializedContent = JsonSerializer.Serialize(models);
              File.WriteAllText(UserFileName, serializedContent);
@@ -33,8 +33,7 @@ namespace MyErp.Repository
             var users = JsonSerializer.Deserialize<List<Client>>(serializedContent);
             if (users == null)
                 return new List<Client>();
-
-            // Utilisation d'une variable pour suivre l'identifiant
+            
             int nextId = 1;
 
             foreach (var user in users)

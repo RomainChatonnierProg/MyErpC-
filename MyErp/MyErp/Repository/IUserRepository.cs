@@ -6,11 +6,11 @@ namespace MyErp.Repository
 {
     public interface IUserRepository
     {
-        void Save(IList<Client> entities);
+        Task Save(IList<Client> entities);
 
         Task<IList<Client>> Load();
         
-        Task<Client?> GetUser(int userId);
+        // Task<Client?> GetUser(int userId);
     }
 }
 

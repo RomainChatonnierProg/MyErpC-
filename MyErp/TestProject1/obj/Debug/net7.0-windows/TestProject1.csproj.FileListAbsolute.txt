@@ -1,0 +1,6 @@
+C:\Users\Yoshew\Desktop\MyErp_romain\TestProject1\bin\Debug\net7.0-windows\CoverletSourceRootsMapping
+C:\Users\Yoshew\Desktop\MyErp_romain\TestProject1\obj\Debug\net7.0-windows\TestProject1.csproj.AssemblyReference.cache
+C:\Users\Yoshew\Desktop\MyErp_romain\TestProject1\obj\Debug\net7.0-windows\TestProject1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yoshew\Desktop\MyErp_romain\TestProject1\obj\Debug\net7.0-windows\TestProject1.AssemblyInfoInputs.cache
+C:\Users\Yoshew\Desktop\MyErp_romain\TestProject1\obj\Debug\net7.0-windows\TestProject1.AssemblyInfo.cs
+C:\Users\Yoshew\Desktop\MyErp_romain\TestProject1\obj\Debug\net7.0-windows\TestProject1.csproj.CoreCompileInputs.cache
